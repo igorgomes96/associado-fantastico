@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <app-card title="Associados" description="Todos os associados cadastros estão listados abaixo">
+
+          <p>Importação de planilha com os dados dos associados.</p>
+          <button mat-raised-button class="btn btn-default" routerLink="cadastro">Baixar Template</button>
+          <button mat-raised-button class="btn btn-success" routerLink="cadastro">Importar Planilha</button>
+          
+          <hr>
+
+          <p>Cadastro manual de associados.</p>
+          <button mat-raised-button class="btn btn-primary mb-3" routerLink="cadastro">Cadastrar Novo</button>
+          <app-associados-list></app-associados-list>
+
+        </app-card>
+
+      </div>
+    </div>
+  </div>
+</div>

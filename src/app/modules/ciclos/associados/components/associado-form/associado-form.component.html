@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h4 class="card-title">Formulário de cadastro</h4>
+    <p class="card-category">Preencha os dados do associado</p>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <mat-form-field>
+            <input matInput placeholder="CPF">
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <mat-form-field>
+            <input matInput placeholder="Matrícula">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field>
+            <input matInput placeholder="Nome" type="text">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <mat-form-field>
+            <input matInput placeholder="Cargo" type="text">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <mat-form-field>
+            <input matInput placeholder="Centro de Custo" type="text">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+          <mat-form-field>
+            <mat-label>Grupo</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let grupo of grupos" [value]="grupo">
+                {{ grupo.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <button mat-raised-button type="submit" class="btn btn-primary pull-right">Salvar</button>
+      <button mat-raised-button class="btn btn-default pull-right" routerLink="../">Cancelar</button>
+
+      <div class="clearfix"></div>
+    </form>
+  </div>
+</div>

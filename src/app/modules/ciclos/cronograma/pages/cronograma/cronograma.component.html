@@ -1,0 +1,80 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <app-card title="Cronograma de Votações" description="Altere aqui os períodos de votação">
+          <div class="cronograma">
+
+            <div class="cronograma-etapa">
+
+              <div class="cronograma-etapa-icon">
+                <mat-icon>calendar_today</mat-icon>
+              </div>
+
+              <p class="cronograma-etapa-titulo">Eleição de Associado Fantástico</p>
+
+              <div class="cronograma-etapa-conteudo">
+                <div class="row">
+                  <div class="col-md-3 col-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="inicioVotacao1Picker" placeholder="Início">
+                      <mat-datepicker-toggle matSuffix [for]="inicioVotacao1Picker"></mat-datepicker-toggle>
+                      <mat-datepicker #inicioVotacao1Picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3 col-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="terminoVotacao1Picker" placeholder="Término">
+                      <mat-datepicker-toggle matSuffix [for]="terminoVotacao1Picker"></mat-datepicker-toggle>
+                      <mat-datepicker #terminoVotacao1Picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <button mat-raised-button class="btn btn-primary">Iniciar Agora</button>
+
+              </div>
+
+
+            </div>
+
+            <div class="cronograma-etapa">
+
+              <div class="cronograma-etapa-icon color-primary">
+                <mat-icon>calendar_today</mat-icon>
+              </div>
+
+              <p class="cronograma-etapa-titulo">Eleição de Associado <span class="text-primary">Super</span>
+                Fantástico</p>
+
+              <div class="cronograma-etapa-conteudo">
+                <div class="row">
+                  <div class="col-md-3 col-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="inicioVotacao2Picker" placeholder="Início">
+                      <mat-datepicker-toggle matSuffix [for]="inicioVotacao2Picker"></mat-datepicker-toggle>
+                      <mat-datepicker #inicioVotacao2Picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3 col-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="terminoVotacao2Picker" placeholder="Término">
+                      <mat-datepicker-toggle matSuffix [for]="terminoVotacao2Picker"></mat-datepicker-toggle>
+                      <mat-datepicker #terminoVotacao2Picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button mat-raised-button class="btn btn-primary">Iniciar Agora</button>
+
+              </div>
+
+            </div>
+          </div>
+        </app-card>
+
+      </div>
+    </div>
+  </div>
+</div>

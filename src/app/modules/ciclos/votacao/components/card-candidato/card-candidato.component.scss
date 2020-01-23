@@ -1,0 +1,14 @@
+.card.card-profile {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .card-avatar {
+        margin-top: -50px;
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+}

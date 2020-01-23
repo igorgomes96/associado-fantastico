@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+td.actions button {
+    padding: 8px 10px;
+    margin-top: 0;
+    margin-bottom: 0;    
+}
+
+td.actions button mat-icon {
+    font-size: 16px;
+    margin: 0;
+    height: auto;
+    width: auto;
+}
+
+td.actions:last-child {
+    text-align: right;
+}

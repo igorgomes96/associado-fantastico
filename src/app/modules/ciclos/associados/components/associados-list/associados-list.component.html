@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <mat-form-field>
+      <mat-label>Grupo</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let grupo of grupos" [value]="grupo">
+          {{ grupo.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <mat-form-field>
+      <input matInput placeholder="Pesquisar">
+    </mat-form-field>
+  </div>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class=" text-primary">
+      <th id="cpf-header">CPF</th>
+      <th id="matricula-header">Matrícula</th>
+      <th id="nome-header">Nome</th>
+      <th id="cargo-header">Cargo</th>
+      <th id="centro-custo-header">Centro de Custo</th>
+      <th id="acoes-header"></th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>111.222.333-10</td>
+        <td>34878</td>
+        <td>Lucas Fernande Alves</td>
+        <td>Atendente JR</td>
+        <td>2398234</td>
+        <td class="actions">
+          <div class="dropup">
+            <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              Opções
+              <b class="caret"></b>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#">Editar</a></li>
+              <li><a href="#">Excluir</a></li>
+              <li><a href="#">Participar da Votação</a></li>
+              <li><a href="#">Foto</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>332.123.654-14</td>
+        <td>654545</td>
+        <td>Igor Gomes de Oliveira</td>
+        <td>Desenvolvedor SR</td>
+        <td>23423444</td>
+        <td class="actions">
+          <div class="dropup">
+            <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              Opções
+              <b class="caret"></b>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#">Editar</a></li>
+              <li><a href="#">Excluir</a></li>
+              <li><a href="#">Participar da Votação</a></li>
+              <li><a href="#">Foto</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

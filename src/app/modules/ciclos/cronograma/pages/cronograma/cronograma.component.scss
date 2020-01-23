@@ -1,0 +1,28 @@
+.cronograma-etapa {
+  padding-left: 10px;
+  margin-bottom: 20px;
+
+  .cronograma-etapa-icon {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #9c27b0;
+    text-align: center;
+    height: 25px;
+    width: 25px;
+    padding-top: 2.5px;
+    mat-icon {
+      font-size: 14px;
+      color: white;
+    }
+  }
+
+  .cronograma-etapa-titulo,
+  .cronograma-etapa-conteudo {
+    padding-left: 50px;
+  }
+
+  .cronograma-etapa-conteudo {
+    border-left: 1px solid #e1e1e1;
+    margin-left: 12px;
+  }
+}

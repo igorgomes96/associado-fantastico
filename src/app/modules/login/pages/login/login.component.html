@@ -1,0 +1,38 @@
+<div class="sidebar-background" style="background-image: url(./assets/img/tech.jpg)"></div>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Login</h4>
+            <p class="card-category">Informe suas credencias para acessar o sistema</p>
+          </div>
+          <div class="card-body">
+            <form (submit)="login()">
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field>
+                    <input matInput placeholder="CPF">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field>
+                    <input matInput placeholder="Matrícula">
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+              <button mat-raised-button type="submit" class="btn btn-primary pull-right">Login</button>
+
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

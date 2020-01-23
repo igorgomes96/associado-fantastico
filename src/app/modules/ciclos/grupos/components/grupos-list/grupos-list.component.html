@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead class=" text-primary">
+      <th>Id</th>
+      <th>Grupo</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grupo of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <td>1</td>
+        <td>Grupo {{ grupo }}</td>
+        <td class="actions">
+          <div class="dropup">
+            <button href="#" class="btn dropdown-toggle" data-toggle="dropdown"
+              aria-expanded="true">
+              Opções
+              <b class="caret"></b>
+            </button>
+            <ul class="dropdown-menu dropdown-primary dropdown-menu-right">
+              <li><a href="#">Editar</a></li>
+              <li><a href="#">Excluir</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
