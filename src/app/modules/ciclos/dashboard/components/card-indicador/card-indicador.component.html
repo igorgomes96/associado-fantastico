@@ -1,0 +1,14 @@
+<div class="card card-stats">
+  <div class="card-header card-header-icon" [ngClass]="classe">
+      <div class="card-icon">
+          <i class="material-icons">{{ icone }}</i>
+      </div>
+      <p class="card-category">{{ titulo }}</p>
+      <h3 class="card-title">{{ valor }}</h3>
+  </div>
+  <div class="card-footer" *ngIf="iconeRodape || textoRodape">
+      <div class="stats">
+          <i class="material-icons">{{ iconeRodape }}</i> {{ textoRodape }}
+      </div>
+  </div>
+</div>
