@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
+declare const $: any;
+
 export declare interface RouteInfo {
   path?: string;
   title: string;
@@ -45,6 +47,12 @@ export class NavbarService {
       title: 'Associados',
       icon: 'person_add',
       class: ''
+    },
+    {
+      path: 'elegiveis',
+      title: 'Elegíveis',
+      icon: 'star',
+      class: ''
     }
     // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '', showOnMenu: true, showNav: true },
     // { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '', showOnMenu: true, showNav: true },
@@ -76,4 +84,10 @@ export class NavbarService {
     return this.alterarCicloIdEmitter.asObservable();
   }
 
+  isMobileMenu() {
+    if ($(window).width() > 991) {
+      return false;
+    }
+    return true;
+  };
 }

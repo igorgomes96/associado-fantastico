@@ -7,7 +7,7 @@
     </a>
 </div>
 <div class="sidebar-wrapper">
-    <div *ngIf="isMobileMenu()">
+    <div *ngIf="navbarService.isMobileMenu()">
         <ul class="nav navbar-nav nav-mobile-menu">
             <li class="nav-item">
                 <a class="nav-link" routerLink="/ciclos">
@@ -28,7 +28,7 @@
         </ul>
     </div>
 
-    <ul class="nav">
+    <ul class="nav" *ngIf="options.showSidenav">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{ change_detection_hack__: cicloId }"
         *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="['/ciclos', cicloId, menuItem.path]">

@@ -26,15 +26,17 @@
       <th id="nome-header">Nome</th>
       <th id="cargo-header">Cargo</th>
       <th id="centro-custo-header">Centro de Custo</th>
+      <th id="aplausogramas-header">Aplausogramas</th>
       <th id="acoes-header"></th>
     </thead>
     <tbody>
-      <tr>
-        <td>111.222.333-10</td>
-        <td>34878</td>
-        <td>Lucas Fernande Alves</td>
-        <td>Atendente JR</td>
-        <td>2398234</td>
+      <tr *ngFor="let associado of associados">
+        <td>{{ associado.cpf }}</td>
+        <td>{{ associado.matricula }}</td>
+        <td>{{ associado.nome }}</td>
+        <td>{{ associado.cargo }}</td>
+        <td>{{ associado.centroCusto }}</td>
+        <td>{{ associado.aplausogramas }}</td>
         <td class="actions">
           <div class="dropup">
             <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -42,31 +44,7 @@
               <b class="caret"></b>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="#">Editar</a></li>
-              <li><a href="#">Excluir</a></li>
-              <li><a href="#">Participar da Votação</a></li>
-              <li><a href="#">Foto</a></li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>332.123.654-14</td>
-        <td>654545</td>
-        <td>Igor Gomes de Oliveira</td>
-        <td>Desenvolvedor SR</td>
-        <td>23423444</td>
-        <td class="actions">
-          <div class="dropup">
-            <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-              Opções
-              <b class="caret"></b>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="#">Editar</a></li>
-              <li><a href="#">Excluir</a></li>
-              <li><a href="#">Participar da Votação</a></li>
-              <li><a href="#">Foto</a></li>
+              <li *ngFor="let opcao of opcoes"><a (click)="onAcao(opcao, associado)">{{ opcao }}</a></li>
             </ul>
           </div>
         </td>

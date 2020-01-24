@@ -57,6 +57,15 @@ const routes: Routes = [
         }
       },
       {
+        path: 'elegiveis',
+        loadChildren: './elegiveis/elegiveis.module#ElegiveisModule',
+        data: {
+          showSidenav: true,
+          showTopnav: true,
+          showFooter: true
+        }
+      },
+      {
         path: 'votacao',
         loadChildren: './votacao/votacao.module#VotacaoModule',
         data: {

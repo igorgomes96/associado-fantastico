@@ -24,7 +24,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
     constructor(
         private location: Location,
         private router: Router,
-        private navbarService: NavbarService
+        public navbarService: NavbarService
     ) { }
 
     ngOnInit() {

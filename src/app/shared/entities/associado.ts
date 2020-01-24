@@ -7,4 +7,5 @@ export interface Associado {
     cargo: string;
     centroCusto: string;
     grupo: Grupo;
+    aplausogramas: number;
 }

@@ -1,11 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatStepperModule, MatIconModule, MatTooltipModule, MatFormFieldModule } from '@angular/material';
+import {
+  MatSelectModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatStepperModule,
+  MatIconModule,
+  MatTooltipModule,
+  MatFormFieldModule,
+  MatAutocompleteModule
+} from '@angular/material';
 import { CardComponent } from './components/card/card.component';
+import { AssociadosListComponent } from './components/associados-list/associados-list.component';
+import { CardCandidatoComponent } from './components/card-candidato/card-candidato.component';
 
 @NgModule({
-  declarations: [CardComponent],
+  declarations: [
+    CardComponent,
+    AssociadosListComponent,
+    CardCandidatoComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -16,7 +32,8 @@ import { CardComponent } from './components/card/card.component';
     MatStepperModule,
     MatIconModule,
     MatTooltipModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatAutocompleteModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +46,10 @@ import { CardComponent } from './components/card/card.component';
     MatIconModule,
     CardComponent,
     MatTooltipModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    AssociadosListComponent,
+    CardCandidatoComponent
   ]
 })
 export class SharedModule { }

@@ -10,6 +10,6 @@
     <p class="card-description">
       Alguma descrição arbitrária.
     </p>
-    <a href="javascript:void(0)" class="btn btn-danger btn-round">Votar</a>
+    <a href *ngFor="let opcao of opcoes" [ngClass]="opcao.class" class="btn btn-round">{{ opcao.opcao }}</a>
   </div>
 </div>

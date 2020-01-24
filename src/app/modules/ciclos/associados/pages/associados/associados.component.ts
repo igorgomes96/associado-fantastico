@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociadosComponent implements OnInit {
 
+  opcoes = ['Editar', 'Excluir', 'Tornar elegível'];
   constructor() { }
 
   ngOnInit() {

@@ -23,6 +23,7 @@ import { CronogramaModule } from './modules/ciclos/cronograma/cronograma.module'
 import { GruposModule } from './modules/ciclos/grupos/grupos.module';
 import { DashboardModule } from './modules/ciclos/dashboard/dashboard.module';
 import { VotacaoModule } from './modules/ciclos/votacao/votacao.module';
+import { ElegiveisModule } from './modules/ciclos/elegiveis/elegiveis.module';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { VotacaoModule } from './modules/ciclos/votacao/votacao.module';
     LoginModule,
     GruposModule,
     DashboardModule,
-    VotacaoModule
+    VotacaoModule,
+    ElegiveisModule
   ],
   declarations: [
     AppComponent,

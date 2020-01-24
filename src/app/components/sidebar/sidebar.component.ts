@@ -1,8 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { RouteInfo, NavbarService } from 'app/core/services/navbar.service';
-import { tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { NavbarService, NavigationOptions } from 'app/core/services/navbar.service';
 
-declare const $: any;
 
 @Component({
   selector: 'app-sidebar',
@@ -13,20 +11,15 @@ export class SidebarComponent implements OnInit {
 
   menuItems: any[];
   cicloId = 1;
+  options: NavigationOptions;
   constructor(public navbarService: NavbarService) {
     this.navbarService.alterarCicloIdObservable.subscribe(cicloId => this.cicloId = cicloId);
   }
 
   ngOnInit() {
+    this.options = this.navbarService.navigationOptions;
     this.menuItems = this.navbarService.ROUTES.filter(menuItem => menuItem);
-  }
-
-  isMobileMenu() {
-    if ($(window).width() > 991) {
-      return false;
-    }
-    return true;
-  };
+  } 
 
 
 }
