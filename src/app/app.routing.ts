@@ -8,7 +8,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'ciclos',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
@@ -18,7 +18,8 @@ const routes: Routes = [
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
-  }
+  },
+  { path: '**', redirectTo: '/ciclos' }
 ];
 
 @NgModule({

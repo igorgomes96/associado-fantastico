@@ -20,3 +20,7 @@ td.actions button mat-icon {
 td.actions:last-child {
   text-align: right;
 }
+
+.card [class*=card-header-] .ct-chart .ct-series-a .ct-bar {
+  stroke-width: 14px !important;
+}

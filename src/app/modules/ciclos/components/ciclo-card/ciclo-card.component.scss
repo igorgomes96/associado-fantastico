@@ -8,3 +8,15 @@
   }
   font: outline;
 }
+p {
+  margin-bottom: 0;
+}
+.small {
+  font-size: 85%;
+  font-weight: 200;
+  color: #717171;
+
+  .material-icons {
+    font-size: 100%;
+  }
+}

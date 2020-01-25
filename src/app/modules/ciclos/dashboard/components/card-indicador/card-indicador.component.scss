@@ -1,3 +1,12 @@
-.card [class*=card-header-] .card-icon, .card [class*=card-header-] .card-text {
-    padding: 8px;
+.card [class*="card-header-"] .card-icon,
+.card [class*="card-header-"] .card-text {
+  padding: 8px;
+}
+
+.card-stats .card-header .card-category:not([class*="text-"]),
+.card-stats .card-header .card-title:not([class*="text-"]),
+.card .card-footer .stats {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

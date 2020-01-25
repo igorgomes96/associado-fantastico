@@ -53,14 +53,31 @@ export class GraficoService {
       horizontalBars: true,
       axisX: {
         onlyInteger: true,
-        offset: 50,
+        offset: 40,
       },
       axisY: {
-        offset: 100
-      }
+        offset: 128,
+        labelInterpolationFnc: (label) => {
+          return this.abreviaNome(label);
+        }
+      },
+      height: labels.length * 36 + 'px',
     });
     chart.on('draw', this.onDrawBarChart);
   };
+
+  private abreviaNome(nome: string) {
+    const nomes = nome.split(' ');
+    if (nomes.length <= 1) {
+      return nome;
+    }
+    return `${nomes[0]} ${this.primeirasLetras(nomes.slice(1, nomes.length - 1))} ${nomes[nomes.length - 1]}`;
+  }
+
+  private primeirasLetras(nomes: string[]): string {
+    return nomes.map(n => `${n.charAt(0)}.`).join(' ');
+  }
+
 
   private onDrawBarChart(data: any) {
     let seq = 0;
