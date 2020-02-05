@@ -11,3 +11,12 @@
         </div>
     </div>
 </div>
+
+<swal #swal
+    [title]="swalOptions?.titulo"
+    [text]="swalOptions?.mensagem"
+    [icon]="swalOptions?.icone"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (cancel)="swalOptions?.confirmacao($event)"
+    (confirm)="swalOptions?.confirmacao($event)"></swal>

@@ -8,7 +8,7 @@ import {
 import {
   VotacaoAssociadosSuperFantasticosComponent
 } from './components/votacao-associados-super-fantasticos/votacao-associados-super-fantasticos.component';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PerfisComponent } from './pages/perfis/perfis.component';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Grupo } from 'app/shared/entities/grupo';
-import { Associado } from 'app/shared/entities/associado';
+import { Grupo } from '@shared/entities/grupo';
+import { Associado } from '@shared/entities/associado';
 
 @Component({
   selector: 'app-associados-list',
@@ -17,8 +17,7 @@ export class AssociadosListComponent implements OnInit {
       cargo: 'Atendente JR',
       centroCusto: '2398234',
       aplausogramas: 20,
-      grupo: null
-    },
+    } as any,
     {
       cpf: '332.123.654-14',
       matricula: '654545',
@@ -27,7 +26,7 @@ export class AssociadosListComponent implements OnInit {
       centroCusto: '23423444',
       aplausogramas: 18,
       grupo: null
-    }
+    } as any
   ];
   @Input() opcoes: string[] = [];
   @Output() acao = new EventEmitter<{ opcao: string, associado: Associado }>();

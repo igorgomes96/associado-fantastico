@@ -3,64 +3,103 @@
     <div class="row">
       <div class="col-sm-12">
         <app-card title="Cronograma de Votação" description="Altere aqui o período da votação">
-          <div class="cronograma">
+          <form [formGroup]="form">
 
-            <div class="cronograma-etapa">
+            <div class="cronograma">
 
-              <div class="cronograma-etapa-icon">
-                <mat-icon>calendar_today</mat-icon>
-              </div>
+              <div class="cronograma-etapa">
 
-              <p class="cronograma-etapa-titulo">Início da votação para Associado Fantástico</p>
+                <div class="cronograma-etapa-icon">
+                  <mat-icon>calendar_today</mat-icon>
+                </div>
 
-              <div class="cronograma-etapa-conteudo">
-                <div class="row">
-                  <div class="col-md-3 col-6">
-                    <mat-form-field>
-                      <input matInput [matDatepicker]="inicioVotacao1Picker" placeholder="Escolha a data">
-                      <mat-datepicker-toggle matSuffix [for]="inicioVotacao1Picker"></mat-datepicker-toggle>
-                      <mat-datepicker #inicioVotacao1Picker></mat-datepicker>
-                    </mat-form-field>
+                <p class="cronograma-etapa-titulo">Início da votação para Associado Fantástico</p>
+
+                <div class="cronograma-etapa-conteudo">
+
+                  <div *ngIf="votacao.periodoRealizado.dataInicio; else inicioVotacao">
+                    <div class="row">
+                      <div class="col-md-3 col-6">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="inicioVotacaoPicker" placeholder="Data"
+                            [(ngModel)]="votacao.periodoRealizado.dataInicio" [disabled]="true" [ngModelOptions]="{standalone: true}">
+                          <mat-datepicker-toggle matSuffix [for]="inicioVotacaoPicker"></mat-datepicker-toggle>
+                          <mat-datepicker #inicioVotacaoPicker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
                   </div>
+
+                  <ng-template #inicioVotacao>
+                    <div class="row">
+                      <div class="col-md-3 col-6">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="inicioVotacaoPicker" placeholder="Escolha a data"
+                            formControlName="dataInicio">
+                          <mat-datepicker-toggle matSuffix [for]="inicioVotacaoPicker"></mat-datepicker-toggle>
+                          <mat-datepicker #inicioVotacaoPicker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+
+                    </div>
+
+                    <button mat-raised-button [ladda]="isLoadingInicio" class="btn btn-primary" (click)="iniciarVotacao()">Iniciar Agora</button>
+                  </ng-template>
 
                 </div>
 
-                <button mat-raised-button class="btn btn-primary">Iniciar Agora</button>
-
 
               </div>
 
+              <div class="cronograma-etapa">
 
-            </div>
+                <div class="cronograma-etapa-icon color-primary">
+                  <mat-icon>calendar_today</mat-icon>
+                </div>
 
-            <div class="cronograma-etapa">
+                <p class="cronograma-etapa-titulo">Término da votação para Associado Fantástico</p>
 
-              <div class="cronograma-etapa-icon color-primary">
-                <mat-icon>calendar_today</mat-icon>
-              </div>
+                <div class="cronograma-etapa-conteudo">
 
-              <p class="cronograma-etapa-titulo">Término da votação para Associado Fantástico</p>
 
-              <div class="cronograma-etapa-conteudo">
-                <div class="row">
-                  <div class="col-md-3 col-6">
-                    <mat-form-field>
-                      <input matInput [matDatepicker]="inicioVotacao2Picker" placeholder="Escolhar a data">
-                      <mat-datepicker-toggle matSuffix [for]="inicioVotacao2Picker"></mat-datepicker-toggle>
-                      <mat-datepicker #inicioVotacao2Picker></mat-datepicker>
-                    </mat-form-field>
+                  <div *ngIf="votacao.periodoRealizado.dataFim; else fimVotacao">
+                    <div class="row">
+                      <div class="col-md-3 col-6">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="fimVotacaoPicker" placeholder="Data"
+                            [(ngModel)]="votacao.periodoRealizado.dataFim" [disabled]="true" [ngModelOptions]="{standalone: true}">
+                          <mat-datepicker-toggle matSuffix [for]="fimVotacaoPicker"></mat-datepicker-toggle>
+                          <mat-datepicker #fimVotacaoPicker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+
+                    </div>
+
                   </div>
+
+                  <ng-template #fimVotacao>
+                    <div class="row">
+                      <div class="col-md-3 col-6">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="fimVotacaoPicker" placeholder="Escolha a data"
+                            formControlName="dataFim">
+                          <mat-datepicker-toggle matSuffix [for]="fimVotacaoPicker"></mat-datepicker-toggle>
+                          <mat-datepicker #fimVotacaoPicker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+
+                    </div>
+
+                    <button mat-raised-button class="btn btn-primary" (click)="finalizarVotacao()"
+                      *ngIf="votacao.periodoRealizado.dataInicio" [ladda]="isLoadingFim">Finalizar Agora</button>
+                  </ng-template>
 
                 </div>
 
-                <button mat-raised-button class="btn btn-primary">Finalizar Agora</button>
-
               </div>
 
             </div>
-          </div>
-
-
+          </form>
         </app-card>
 
       </div>

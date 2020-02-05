@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Associado } from 'app/shared/entities/associado';
+import { Associado } from '@shared/entities/associado';
 
 export interface CardCandidatoOpcoes {
   opcao: string;

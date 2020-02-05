@@ -1,12 +1,13 @@
-import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, OnDestroy } from '@angular/core';
 import { Location, PopStateEvent } from '@angular/common';
-import { Router, NavigationEnd, NavigationStart, ActivationStart, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { tap, filter, distinctUntilChanged } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as $ from 'jquery';
 import 'rxjs/add/operator/filter';
-import { NavbarService, RouteInfo, NavigationOptions } from 'app/core/services/navbar.service';
+import { NavbarService, RouteInfo, NavigationOptions } from '@core/services/navbar.service';
+import { NotificacoesService, SwalOptions } from '@core/services/notificacoes.service';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 
 @Component({
@@ -14,20 +15,33 @@ import { NavbarService, RouteInfo, NavigationOptions } from 'app/core/services/n
     templateUrl: './admin-layout.component.html',
     styleUrls: ['./admin-layout.component.scss']
 })
-export class AdminLayoutComponent implements OnInit, AfterViewInit {
+export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    @ViewChild('swal', { static: false }) swal: SwalComponent;
+
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
     private subscription = new Subscription();
+    swalOptions: SwalOptions = null;
 
     options: NavigationOptions;
 
     constructor(
         private location: Location,
         private router: Router,
-        public navbarService: NavbarService
+        public navbarService: NavbarService,
+        private notificacoesService: NotificacoesService
     ) { }
 
     ngOnInit() {
+
+        this.subscription.add(
+            this.notificacoesService.onShowSwal().subscribe((options: SwalOptions) => {
+                this.swalOptions = options;
+                setTimeout(() => this.swal.fire(), 100);
+            })
+        );
+
         this.options = this.navbarService.navigationOptions;
         const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
@@ -85,7 +99,8 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
         }
 
         $('.fixed-plugin a').click(function (event) {
-            // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+            // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide,
+            // otherwise we set the  section active
             if ($(this).hasClass('switch-trigger')) {
                 if (event.stopPropagation) {
                     event.stopPropagation();
@@ -174,6 +189,10 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
             bool = true;
         }
         return bool;
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
 }

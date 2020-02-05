@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { VotacaoRoutingModule } from './votacao-routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { VotacaoComponent } from './pages/votacao/votacao.component';
 
 @NgModule({

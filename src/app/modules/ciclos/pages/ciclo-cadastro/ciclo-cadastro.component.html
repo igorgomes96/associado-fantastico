@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <app-ciclo-form (submit)="abrirCiclo($event)"></app-ciclo-form>
+        <app-ciclo-form (abrirCiclo)="abrirCiclo($event)" [isLoading]="isLoading"></app-ciclo-form>
       </div>
     </div>
   </div>

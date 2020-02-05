@@ -1,11 +1,7 @@
-import { Grupo } from './grupo';
+import { Usuario } from './usuario';
 
-export interface Associado {
-    cpf: string;
-    matricula: string;
-    nome: string;
-    cargo: string;
+export class Associado extends Usuario {
     centroCusto: string;
-    grupo: Grupo;
+    grupoId: string;
     aplausogramas: number;
 }

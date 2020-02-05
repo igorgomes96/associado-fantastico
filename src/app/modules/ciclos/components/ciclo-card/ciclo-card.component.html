@@ -1,16 +1,17 @@
 <div class="card">
   <div class="card-header card-header-primary">
-    <h4 class="card-title">2020 - 1º Semestre</h4>
-    <p class="card-category">Novo ciclo, Teste</p>
+    <h4 class="card-title">{{ ciclo.ano }} - {{ ciclo.semestre}}º Semestre</h4>
+    <p class="card-category">{{ ciclo.descricao }}</p>
   </div>
   <div class="card-body">
     <p class="card-category">Eleição Associados Fantásticos</p>
     <p class="data">
       <span class="material-icons">
         date_range
-      </span> 20/02 a 28/02
+      </span> {{ periodoVotacao(ciclo.votacaoAssociadoFantastico).dataInicio | date:'dd/MM' }} a 
+      {{ periodoVotacao(ciclo.votacaoAssociadoFantastico).dataFim | date:'dd/MM' }}
     </p>
-    <button routerLink="1/cronograma" mat-raised-button class="btn btn-primary">Acessar</button>
+    <button [routerLink]="[ciclo.id, 'votacoes', ciclo.votacaoAssociadoFantastico.id, 'cronograma']" mat-raised-button class="btn btn-primary">Acessar</button>
 
     <hr>
 
@@ -18,19 +19,23 @@
     <p class="data">
       <span class="material-icons">
         date_range
-      </span> 23/03 a 30/03
+      </span> {{ periodoVotacao(ciclo.votacaoAssociadoSuperFantastico).dataInicio | date:'dd/MM' }} a 
+      {{ periodoVotacao(ciclo.votacaoAssociadoSuperFantastico).dataFim | date:'dd/MM' }}
     </p>
 
-    <p class="small">
-        <span class="material-icons">
-          info
-        </span> O acesso será liberado após a eleição dos Associados Fantásticos
+    <p class="small" *ngIf="!ciclo.votacaoAssociadoFantastico.periodoRealizado.dataFim">
+      <span class="material-icons">
+        info
+      </span> O acesso será liberado após a eleição dos Associados Fantásticos
     </p>
+
+    <button  *ngIf="ciclo.votacaoAssociadoFantastico.periodoRealizado.dataFim"
+      [routerLink]="[ciclo.id, 'votacoes', ciclo.votacaoAssociadoSuperFantastico.id, 'cronograma']" mat-raised-button class="btn btn-primary">Acessar</button>
 
   </div>
   <div class="card-footer">
     <div class="stats">
-      <span class="material-icons">calendar_today</span> 05/01/2020 13:25
+      <span class="material-icons">calendar_today</span> {{ ciclo.dataInicio | date:'dd/MM/yyyy HH:mm'}}
     </div>
   </div>
 </div>

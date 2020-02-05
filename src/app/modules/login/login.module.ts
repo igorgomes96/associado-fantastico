@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { LoginRoutingModule } from './login-routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({

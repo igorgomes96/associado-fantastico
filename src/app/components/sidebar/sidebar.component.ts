@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService, NavigationOptions } from 'app/core/services/navbar.service';
+import { NavbarService, NavigationOptions } from '@core/services/navbar.service';
 
 
 @Component({
@@ -10,16 +10,19 @@ import { NavbarService, NavigationOptions } from 'app/core/services/navbar.servi
 export class SidebarComponent implements OnInit {
 
   menuItems: any[];
-  cicloId = 1;
+  cicloId = '';
+  votacaoId = '';
   options: NavigationOptions;
   constructor(public navbarService: NavbarService) {
     this.navbarService.alterarCicloIdObservable.subscribe(cicloId => this.cicloId = cicloId);
+    this.navbarService.alterarVotacaoIdObservable.subscribe(votacaId => this.votacaoId = votacaId);
+
   }
 
   ngOnInit() {
     this.options = this.navbarService.navigationOptions;
     this.menuItems = this.navbarService.ROUTES.filter(menuItem => menuItem);
-  } 
+  }
 
 
 }

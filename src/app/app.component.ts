@@ -29,6 +29,10 @@ export class AppComponent implements OnInit, OnDestroy {
       if (cicloId) {
         this.navbarService.alterarCicloIdEmitter.next(cicloId);
       }
+      const votacaoId = event.snapshot.params['votacaoid'];
+      if (votacaoId) {
+        this.navbarService.alterarVotacaoIdEmitter.next(votacaoId);
+      }
     });
 
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {

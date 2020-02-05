@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Grupo } from 'app/shared/entities/grupo';
+import { Grupo } from '@shared/entities/grupo';
 
 @Component({
   selector: 'app-associado-form',

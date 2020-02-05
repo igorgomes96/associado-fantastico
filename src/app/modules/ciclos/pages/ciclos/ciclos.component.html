@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-ciclo-card></app-ciclo-card>
+      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let ciclo of ciclos">
+        <app-ciclo-card [ciclo]="ciclo"></app-ciclo-card>
       </div>
     </div>
   </div>

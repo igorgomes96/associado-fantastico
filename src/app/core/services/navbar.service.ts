@@ -54,18 +54,13 @@ export class NavbarService {
       icon: 'star',
       class: ''
     }
-    // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '', showOnMenu: true, showNav: true },
-    // { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '', showOnMenu: true, showNav: true },
-    // { path: '/typography', title: 'Typography', icon: 'library_books', class: '', showOnMenu: true, showNav: true },
-    // { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '', showOnMenu: true, showNav: true },
-    // { path: '/maps', title: 'Maps', icon: 'location_on', class: '', showOnMenu: true, showNav: true },
-    // { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '', showOnMenu: true, showNav: true },
-    // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro', showOnMenu: true, showNav: true },
   ];
 
-  private cicloId: number;
+  private cicloId: string;
+  private votacaoId: string;
   alterarRotaEmitter = new BehaviorSubject<RouteInfo>(this.ROUTES[0]);
-  alterarCicloIdEmitter = new BehaviorSubject<number>(this.cicloId);
+  alterarCicloIdEmitter = new BehaviorSubject<string>(this.cicloId);
+  alterarVotacaoIdEmitter = new BehaviorSubject<string>(this.votacaoId);
   navigationOptions: NavigationOptions = {
     showFooter: true,
     showOnMenu: true,
@@ -80,8 +75,12 @@ export class NavbarService {
     return this.alterarRotaEmitter.asObservable();
   }
 
-  get alterarCicloIdObservable(): Observable<number> {
+  get alterarCicloIdObservable(): Observable<string> {
     return this.alterarCicloIdEmitter.asObservable();
+  }
+
+  get alterarVotacaoIdObservable(): Observable<string> {
+    return this.alterarVotacaoIdEmitter.asObservable();
   }
 
   isMobileMenu() {

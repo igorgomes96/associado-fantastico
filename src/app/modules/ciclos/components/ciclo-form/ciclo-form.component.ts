@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Ciclo } from 'app/shared/entities/ciclo';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { NovoCiclo } from '@shared/entities/ciclo';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormValidationService } from '@core/services/form-validation.service';
 
 @Component({
   selector: 'app-ciclo-form',
@@ -8,24 +10,48 @@ import { Ciclo } from 'app/shared/entities/ciclo';
 })
 export class CicloFormComponent implements OnInit {
 
-  anos = [2020, 2021, 2022];
+  form: FormGroup;
+  anos = [];
   semestres = [1, 2];
 
-  @Output() submit = new EventEmitter<Ciclo>();
-  constructor() { }
+  @Input() isLoading = false;
+  @Output() abrirCiclo = new EventEmitter<NovoCiclo>();
+  constructor(
+    private fb: FormBuilder,
+    public formValidation: FormValidationService
+  ) { }
 
   ngOnInit() {
+    const hoje = new Date();
+    const anoInicial = hoje.getFullYear();
+    for (let i = 0; i < 3; i++) {
+      this.anos.push(anoInicial + i);
+    }
+
+    const semestreInicial = hoje.getMonth() > 5 ? 2 : 1;
+    this.form = this.fb.group({
+      ano: [anoInicial, [Validators.required]],
+      semestre: [semestreInicial, [Validators.required]],
+      descricao: [`${anoInicial} - ${semestreInicial}`, [Validators.required, Validators.maxLength(255)]],
+      periodoVotacaoAssociadoFantastico: this.fb.group({
+        dataInicio: [null, [Validators.required]],
+        dataFim: [null, [Validators.required]]
+      }),
+      periodoVotacaoAssociadoSuperFantastico: this.fb.group({
+        dataInicio: [null, [Validators.required]],
+        dataFim: [null, [Validators.required]]
+      })
+    });
+
+    this.form.get('ano').valueChanges
+      .subscribe(ano => this.form.get('descricao').setValue(`${ano} - ${this.form.get('semestre').value}`));
+
+    this.form.get('semestre').valueChanges
+      .subscribe(semestre => this.form.get('descricao').setValue(`${this.form.get('ano').value} - ${semestre}`));
   }
 
   onSubmit() {
-    this.submit.emit({
-      id: 1,
-      ano: 2020,
-      descricao: 'Teste',
-      semestre: 1,
-      votacaoAssociadoFantastico: null,
-      votacaoAssociadoSuperFantastico: null
-    });
+    this.abrirCiclo.emit(this.form.value);
   }
 
 }

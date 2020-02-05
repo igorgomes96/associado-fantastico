@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { RouteInfo, NavbarService } from 'app/core/services/navbar.service';
+import { RouteInfo, NavbarService } from '@core/services/navbar.service';
 
 @Component({
     selector: 'app-navbar',

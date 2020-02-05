@@ -1,6 +1,8 @@
+import { Periodo } from './periodo';
+
 export interface Votacao {
-    dataInicioPrevista: Date;
-    dataFimPrevista: Date;
-    dataInicio: Date;
-    dataFim: Date;
+    id: string;
+    periodoPrevisto: Periodo;
+    periodoRealizado: Periodo;
+    cicloId: string;
 }

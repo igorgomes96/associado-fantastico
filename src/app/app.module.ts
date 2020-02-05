@@ -1,5 +1,6 @@
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -10,12 +11,10 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { CiclosModule } from './modules/ciclos/ciclos.module';
 import { LoginModule } from './modules/login/login.module';
+import localePt from '@angular/common/locales/pt';
 
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { AssociadosModule } from './modules/ciclos/associados/associados.module';
@@ -24,20 +23,26 @@ import { GruposModule } from './modules/ciclos/grupos/grupos.module';
 import { DashboardModule } from './modules/ciclos/dashboard/dashboard.module';
 import { VotacaoModule } from './modules/ciclos/votacao/votacao.module';
 import { ElegiveisModule } from './modules/ciclos/elegiveis/elegiveis.module';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { registerLocaleData } from '@angular/common';
+import { InterceptorsModule } from '@core/interceptors/interceptors.module';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
+registerLocaleData(localePt);
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    // }),
     CiclosModule,
     AssociadosModule,
     CronogramaModule,
@@ -45,16 +50,29 @@ import { ElegiveisModule } from './modules/ciclos/elegiveis/elegiveis.module';
     GruposModule,
     DashboardModule,
     VotacaoModule,
-    ElegiveisModule
+    ElegiveisModule,
+    InterceptorsModule,
+    SweetAlert2Module.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+      }
+    })
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
 
   ],
-  providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
-  }],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
+    },
+    {
+      provide: LOCALE_ID, useValue: 'pt-BR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

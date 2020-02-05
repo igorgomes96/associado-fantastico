@@ -31,7 +31,7 @@
     <ul class="nav" *ngIf="options.showSidenav">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{ change_detection_hack__: cicloId }"
         *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a class="nav-link" [routerLink]="['/ciclos', cicloId, menuItem.path]">
+            <a class="nav-link" [routerLink]="['/ciclos', cicloId, 'votacoes', votacaoId, menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
