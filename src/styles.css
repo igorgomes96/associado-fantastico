@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+.dropdown-menu a {
+  cursor: pointer;
+}
+
+td .btn {
+  background-color: white !important;
+  color: #212529;
+  text-transform: none;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+td .btn:hover {
+  color: #212529 !important;
+}
+
+.dropdown-menu li a:hover {
+  color: white !important;
+}
+
 .table-responsive td,
 .table-responsive th {
   white-space: nowrap;

@@ -13,7 +13,7 @@ export class GenericApi<T> {
     }
 
     get(id: number | string): Observable<T> {
-        return this.http.get<T>(`${this.url}${id}`).pipe(take(1));
+        return this.http.get<T>(`${this.url}/${id}`).pipe(take(1));
     }
 
     post(data: T): Observable<T> {
@@ -21,11 +21,11 @@ export class GenericApi<T> {
     }
 
     put(id: number | string, data: T): Observable<void | T> {
-        return this.http.put<void | T>(`${this.url}${id}`, data).pipe(take(1));
+        return this.http.put<void | T>(`${this.url}/${id}`, data).pipe(take(1));
     }
 
     delete(id: number | string): Observable<T> {
-        return this.http.delete<T>(`${this.url}${id}`).pipe(take(1));
+        return this.http.delete<T>(`${this.url}/${id}`).pipe(take(1));
     }
 
     validParams(params: any = {}): any {

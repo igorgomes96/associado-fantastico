@@ -8,7 +8,7 @@ import { Grupo } from '@shared/entities/grupo';
 })
 export class AssociadoFormComponent implements OnInit {
 
-  grupos: Grupo[] = [{ nome: 'Grupo 1' }, { nome: 'Grupo 2' }];
+  grupos: Grupo[] = [];
   constructor() { }
 
   ngOnInit() {

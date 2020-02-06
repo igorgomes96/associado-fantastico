@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Votacao } from '@shared/entities/votacao';
 import { Observable } from 'rxjs';
+import { Grupo } from '@shared/entities/grupo';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,24 @@ export class CiclosApiService extends GenericApi<Ciclo> {
     return this.http.post<void>(`${this.url}/${cicloId}/votacoes/${votacaoId}/finalizar`, null).pipe(take(1));
   }
 
-  putAtualizarVotacao(cicloId: string, votacaoId: string, votacao: Votacao) {
+  putAtualizarVotacao(cicloId: string, votacaoId: string, votacao: Votacao): Observable<void>  {
     return this.http.put<void>(`${this.url}/${cicloId}/votacoes/${votacaoId}`, votacao).pipe(take(1));
+  }
+
+  postAdicionarGrupo(cicloId: string, grupo: Grupo): Observable<void>  {
+    return this.http.post<void>(`${this.url}/${cicloId}/grupos`, grupo).pipe(take(1));
+  }
+
+  putAtualizarGrupo(cicloId: string, grupo: Grupo): Observable<void>  {
+    return this.http.put<void>(`${this.url}/${cicloId}/grupos/${grupo.id}`, grupo).pipe(take(1));
+  }
+
+  deleteGrupo(cicloId: string, grupoId: string): Observable<Grupo>  {
+    return this.http.delete<Grupo>(`${this.url}/${cicloId}/grupos/${grupoId}`).pipe(take(1));
+  }
+
+  getGrupos(cicloId: string): Observable<Grupo[]> {
+    return this.http.get<Grupo[]>(`${this.url}/${cicloId}/grupos`).pipe(take(1));
   }
 
 }

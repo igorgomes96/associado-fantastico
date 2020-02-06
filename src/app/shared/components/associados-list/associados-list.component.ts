@@ -31,7 +31,7 @@ export class AssociadosListComponent implements OnInit {
   @Input() opcoes: string[] = [];
   @Output() acao = new EventEmitter<{ opcao: string, associado: Associado }>();
 
-  grupos: Grupo[] = [{ nome: 'Grupo 1' }, { nome: 'Grupo 2' }];
+  grupos: Grupo[] = [];
 
   constructor() { }
 

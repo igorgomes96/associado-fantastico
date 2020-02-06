@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CiclosComponent } from './pages/ciclos/ciclos.component';
 import { CicloCadastroComponent } from './pages/ciclo-cadastro/ciclo-cadastro.component';
-import { VotacaoResolverService } from 'src/app/guards/resolvers/votacao-resolver.service';
+import { VotacaoResolverService } from '@core/guards/resolvers/votacao-resolver.service';
+import { CicloResolverService } from '@core/guards/resolvers/ciclo-resolver.service';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: ':cicloid',
+    resolve: {
+      ciclo: CicloResolverService
+    },
     children: [
       {
         path: 'votacoes/:votacaoid',

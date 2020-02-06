@@ -10,7 +10,7 @@ import { Grupo } from '@shared/entities/grupo';
 })
 export class DashboardComponent implements OnInit {
 
-  grupos: Grupo[] = [{ nome: 'Grupo 1' }, { nome: 'Grupo 2' }];
+  grupos: Grupo[] = [];
   grupoSelecionado: Grupo;
   constructor(private graficoService: GraficoService) { }
 
