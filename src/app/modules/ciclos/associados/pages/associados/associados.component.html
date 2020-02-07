@@ -13,7 +13,8 @@
 
           <p>Cadastro manual de associados.</p>
           <button mat-raised-button class="btn btn-primary mb-3" routerLink="cadastro">Cadastrar Novo</button>
-          <app-associados-list [opcoes]="opcoes"></app-associados-list>
+          <app-associados-list [opcoes]="opcoes" [ciclo]="ciclo" 
+            (acao)="onAcao($event)" [associados]="associados$ | async" (pesquisar)="pesquisar($event)"></app-associados-list>
 
         </app-card>
 

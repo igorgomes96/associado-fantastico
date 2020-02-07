@@ -1,3 +1,9 @@
-<p>
-  associado-edicao works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <app-associado-form [ciclo]="ciclo" [associado]="associado" (salvar)="salvarAssociado($event)"></app-associado-form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,25 +2,35 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
-        
-        <app-card title="Elegíveis para Eleicão de Associado Fantástico"
+
+        <app-card title="Elegíveis para essa Votação"
           description="Todos os associados elegíveis para a primeira votação estão listados abaixo">
 
-          
+
           <button mat-raised-button class="btn btn-primary" routerLink="perfis">Visualizar Perfis</button>
 
           <hr>
 
-          <div class="row">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-              <mat-form-field>
-                <input matInput placeholder="Adicionar Associado">
-              </mat-form-field>
+          <div class="row mb-3" *ngIf="permitirEdicao">
+            <div class="col-12 col-sm-8 col-md-6">
+              <form [formGroup]="form">
+                <mat-form-field>
+                  <input type="text" placeholder="Adicionar elegivel.." matInput formControlName="filtro"
+                    [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="nomeAssociado.bind(this)" (optionSelected)="onSelectAssociado($event)">
+                    <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
+                      {{ option.nome }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <!-- <mat-hint>Os associado são filtrados também de acordo com o grupo selecionado abaixo.</mat-hint> -->
+                </mat-form-field>
+              </form>
             </div>
           </div>
 
 
-          <app-associados-list [opcoes]="opcoesVotacao1"></app-associados-list>
+          <app-associados-list [opcoes]="opcoes" [ciclo]="ciclo" (acao)="onAcao($event)"
+            [associados]="elegiveis$ | async" (pesquisar)="pesquisar($event)"></app-associados-list>
 
         </app-card>
 

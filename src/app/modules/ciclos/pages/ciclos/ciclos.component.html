@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="!ciclos || !ciclos.length">
       <div class="col">
         <button mat-raised-button class="btn btn-primary" routerLink="cadastro">Novo Ciclo</button>
       </div>

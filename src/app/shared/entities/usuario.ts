@@ -5,6 +5,7 @@ export enum PerfilUsuario {
 }
 
 export class Usuario {
+    id: string;
     cpf: string;
     matricula: string;
     nome: string;
